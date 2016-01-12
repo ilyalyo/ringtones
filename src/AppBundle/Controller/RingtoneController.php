@@ -12,14 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * Provider controller.
  *
- * @Route("/provider")
+ * @Route("/ringtones")
  */
-class ProviderController extends Controller
+class RingtoneController extends Controller
 {
     /**
      * Lists all Ringtone entities.
      *
-     * @Route("/", name="provider")
+     * @Route("/", name="ringtones")
      * @Method("GET")
      * @Template()
      */
@@ -37,9 +37,9 @@ class ProviderController extends Controller
     /**
      * Creates a new Ringtone entity.
      *
-     * @Route("/create", name="provider_ringtone_create")
+     * @Route("/create", name="ringtone_create")
      * @Method("POST")
-     * @Template("AppBundle:Provider:new.html.twig")
+     * @Template("AppBundle:Ringtone:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -53,7 +53,7 @@ class ProviderController extends Controller
             $em->flush();
             $this->addFlash('success', 'blog.article.flash.create.success');
 
-            return $this->redirect($this->generateUrl('provider'));
+            return $this->redirect($this->generateUrl('ringtones'));
         }
 
         return array(
@@ -72,7 +72,7 @@ class ProviderController extends Controller
     private function createCreateForm(Ringtone $entity)
     {
         $form = $this->createForm(new RingtoneType(), $entity, array(
-            'action' => $this->generateUrl('provider_ringtone_create'),
+            'action' => $this->generateUrl('ringtone_create'),
             'method' => 'POST',
         ));
 
@@ -82,7 +82,7 @@ class ProviderController extends Controller
     /**
      * Displays a form to create a new Ringtone entity.
      *
-     * @Route("/new", name="provider_ringtone_new")
+     * @Route("/new", name="ringtone_new")
      * @Method("GET")
      * @Template()
      */
@@ -100,7 +100,7 @@ class ProviderController extends Controller
     /**
      * Displays a form to edit an existing Ringtone entity.
      *
-     * @Route("/{id}/edit", name="provider_ringtone_edit")
+     * @Route("/{id}/edit", name="ringtone_edit")
      * @Method("GET")
      * @Template()
      */
@@ -134,7 +134,7 @@ class ProviderController extends Controller
     private function createEditForm(Ringtone $entity)
     {
         $form = $this->createForm(new RingtoneType(), $entity, array(
-            'action' => $this->generateUrl('provider_ringtone_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('ringtone_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -143,9 +143,9 @@ class ProviderController extends Controller
     /**
      * Edits an existing Ringtone entity.
      *
-     * @Route("/{id}", name="provider_ringtone_update")
+     * @Route("/{id}", name="ringtone_update")
      * @Method("PUT")
-     * @Template("AppBundle:Provider:edit.html.twig")
+     * @Template("AppBundle:Ringtone:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -163,9 +163,9 @@ class ProviderController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-            $this->addFlash('success', 'blog.article.flash.edit.success');
+            $this->addFlash('success', 'success');
 
-            return $this->redirect($this->generateUrl('provider'));
+            return $this->redirect($this->generateUrl('ringtones'));
         }
 
         return array(
@@ -177,7 +177,7 @@ class ProviderController extends Controller
     /**
      * Deletes a Ringtone entity.
      *
-     * @Route("/{id}", name="provider_ringtone_delete")
+     * @Route("/{id}", name="ringtone_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -193,12 +193,12 @@ class ProviderController extends Controller
                 throw $this->createNotFoundException('Unable to find Ringtone entity.');
             }
 
-            $this->addFlash('success', 'blog.article.flash.delete.success');
+            $this->addFlash('success', 'success');
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('provider'));
+        return $this->redirect($this->generateUrl('ringtones'));
     }
 
     /**
@@ -211,7 +211,7 @@ class ProviderController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('provider_ringtone_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('ringtone_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete', 'attr' => array('class' => 'btn btn-danger')))
             ->getForm()

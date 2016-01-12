@@ -8,7 +8,7 @@ fos_user_register:
     prefix: /register
 fos_user_registration_confirmed:
     pattern: /registration/confirmed
-    defaults: { _controller: AppBundle:Provider:index }
+    defaults: { _controller: AppBundle:Ringtone:index }
     requirements:
         _method: GET
 fos_user_resetting:
