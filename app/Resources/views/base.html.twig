@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li><a href="{{ path('ringtones') }}"><p>Home</p></a></li>
+                        <li><a href="{{ path('ringtones') }}">Home</a></li>
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">
                                 {{ 'layout.logout'|trans({},'FOSUserBundle') }}
