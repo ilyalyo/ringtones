@@ -1,5 +1,7 @@
 .ringtones-container{
     margin: auto;
     max-width: 800px;
+}
+table.table-bordered.dataTable{
     background: white;
 }
