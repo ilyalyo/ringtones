@@ -10,9 +10,14 @@
 
 {% block body %}
 
-    <div class="box">
-        <div class="box-header">
-            <h3 class="box-title"></h3>
+
+    <!-- /.box-header -->
+    <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+        <div class="row ringtones-container">
+
+            <div class="col-sm-12">
+                <div class="box-header">
+                    <h3 class="box-title"></h3>
             <span class="pull-right">
                                 <a href="{{ path('ringtone_new') }}">
                                     <button class="btn btn-block btn-success">
@@ -20,50 +25,41 @@
                                     </button>
                                 </a>
             </span>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
-                               aria-describedby="example1_info">
-                            <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Price</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for entity in entities %}
-                                <tr>
-                                    <td>{{ entity.title }}</td>
-                                    <td>{{ entity.price }}</td>
-                                    <td>
-                                        <a class="btn btn-info"
-                                           href="{{ path('ringtone_edit', { 'id': entity.id }) }}">
-                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                            Edit
-                                        </a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>Title</th>
-                                <th>Price</th>
-                                <th>Actions</th>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
                 </div>
+                <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+                       aria-describedby="example1_info">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td>{{ entity.title }}</td>
+                            <td>{{ entity.price }}</td>
+                            <td>
+                                <a class="btn btn-info"
+                                   href="{{ path('ringtone_edit', { 'id': entity.id }) }}">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                    </tfoot>
+                </table>
             </div>
-
         </div>
-        <!-- /.box-body -->
     </div>
 {% endblock %}
 
@@ -71,13 +67,4 @@
 
 
 {% block javascripts_inline %}
-    <!-- page script -->
-    <script type="text/javascript">
-        $(function () {
-            $('#example1').dataTable({
-                "order": [[3, "desc"]]
-            });
-        });
-    </script>
-
 {% endblock %}
